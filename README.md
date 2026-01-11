@@ -1,34 +1,50 @@
-# 🌊 Sinop Private Share
 
-> **Secure, Fast, and Personal Data Transfer Station**
+# 🌊 Sinop Private Share (SPS)
 
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Deploy-green?style=flat&logo=github-actions)
-![Security](https://img.shields.io/badge/Security-Firebase_Auth-blue?style=flat&logo=firebase)
-![Status](https://img.shields.io/badge/Status-Live-success)
+**A minimalist, secure (i guess), personal note-taking and link-sharing feed.**
 
-**Sinop Private Share** is a secure **Single Page Application (SPA)** designed to synchronize links, notes, and text between your computer and mobile devices in real-time. It is hosted on GitHub Pages and powered by Google Firebase.
+SPS is designed as a private micro-blogging tool for a single user. It allows you to quickly drop notes, save links, and view them in a real-time feed from any device. Its primary focus is simplicity and robust security, ensuring your personal data remains completely private.
 
-## 🚀 Features
+---
 
-* **Real-Time Sync:** Notes written on PC appear instantly on mobile (Firestore Realtime Updates).
-* **High Privacy:** Only whitelisted users can sign in. Registration is disabled.
-* **Smart Links:** Automatically detects and converts URLs into clickable links.
-* **Security First:** XSS protection and strict database rules.
-* **Responsive:** Mobile-friendly design with Tailwind CSS.
+## <div align="center"> <img src="https://github.com/user-attachments/assets/0f54c21a-6f4d-4c70-bc58-3fa53d043be5" alt="Login Screen" width="45%" /> &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/257e3a54-cf23-4101-981f-7d48f6460c2b" alt="App Dashboard" width="45%" /> </div>
 
-## 🛠️ Tech Stack
 
-* **Frontend:** HTML5, Vanilla JavaScript (ES Modules), Tailwind CSS
-* **Backend:** Google Firebase (Authentication & Firestore)
-* **Hosting:** GitHub Pages
-* **CI/CD:** GitHub Actions (Automated Deploy & Secret Injection)
 
-## 🔐 Security Architecture
+## ✨ Key Features
 
-This project is built with a strict security-first approach:
+* **🔒 Secure Single-User Access:** Designed for one admin only. No registration forms, no public access.
+* **⚡ Real-time Updates:** Powered by Firebase Firestore, your feed updates instantly across all devices without refreshing.
+* **🔗 Smart Link Detection:** URLs pasted into notes are automatically converted into clickable links.
+* **🗑️ Easy Management:** Delete unwanted notes instantly with a single click.
+* **📱 Responsive Design:** Built with Tailwind CSS, it looks great on desktops, tablets, and mobile phones.
+* **🚀 Automated Deployment:** Uses GitHub Actions for seamless deployment and secure credential management.
 
-1.  **Domain Restriction:** API keys are restricted via Google Cloud Console to only accept requests from `github.io`
-2.  **NoSQL Injection Immunity:** Data is separated from commands using Firebase SDK.
-3.  **Strict Rules:** Database access is blocked for unauthenticated users.
-   ```javascript
-   allow read, write: if request.auth != null;
+---
+
+## 🛡️ Security Architecture
+Here is how we secured it:
+
+### 1. Firebase Authentication
+
+New user registration (Sign-up) has been **completely disabled** at the Firebase console level. Even if someone attempts to trigger the registration API programmatically, the request will be rejected by the server (`auth/operation-not-allowed`). Only the pre-configured administrator email can log in.
+
+### 2. Firestore Security Rules (Whitelist)
+
+The database rules check the user's specific email address against a whitelist.
+
+* **Rule:** `allow read, write: if request.auth.token.email == "b@b.com";`
+* *Result:* Even if someone manages to obtain valid credentials, they will see an empty feed unless their email matches the owner's email exactly.
+
+### 3. API Key Domain Locking
+
+The Google Cloud API keys used by the application are restricted to function only on the specific GitHub Pages domain of this project (e.g., `https://batuhd.github.io/*`). They are useless elsewhere.
+
+---
+
+## 🛠️ Technologies Used
+
+* **Frontend:** HTML5, JavaScript (ES Modules)
+* **Styling:** Tailwind CSS (via CDN)
+* **Backend-as-a-Service:** Firebase Auth, Cloud Firestore
+* **Hosting & CI/CD:** GitHub Pages, GitHub Actions
