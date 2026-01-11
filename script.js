@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-const firebaseConfig = ;
+const firebaseConfig = {apiKey:"AIzaSyB0DJHhalzqQVdAq7cSj862S23r4JYX6fY",authDomain:"sinop-private-share.firebaseapp.com",projectId:"sinop-private-share",storageBucket:"sinop-private-share.firebasestorage.app",messagingSenderId:"365312486932",appId:"1:365312486932:web:9c50760cbb08f99d8d4101"};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
