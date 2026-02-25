@@ -7,8 +7,9 @@ SPS is designed as a private micro-blogging tool for a single user. It allows yo
 
 ---
 
-## <div align="center"> <img src="https://github.com/user-attachments/assets/0f54c21a-6f4d-4c70-bc58-3fa53d043be5" alt="Login Screen" width="45%" /> &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/257e3a54-cf23-4101-981f-7d48f6460c2b" alt="App Dashboard" width="45%" /> </div>
+## <div align="center"> <img src="https://github.com/user-attachments/assets/0f54c21a-6f4d-4c70-bc58-3fa53d043be5" alt="Login Screen" width="45%" /> &nbsp;&nbsp;&nbsp;&nbsp; 
 
+<img width="1326" height="512" alt="adaa" src="https://github.com/user-attachments/assets/858628c8-b1f9-429c-bd9f-fff448f29451" />
 
 
 ## ✨ Key Features
@@ -48,3 +49,4 @@ The Google Cloud API keys used by the application are restricted to function onl
 * **Styling:** Tailwind CSS (via CDN)
 * **Backend-as-a-Service:** Firebase Auth, Cloud Firestore
 * **Hosting & CI/CD:** GitHub Pages, GitHub Actions
+
